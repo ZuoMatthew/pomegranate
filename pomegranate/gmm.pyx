@@ -207,7 +207,7 @@ cdef class GeneralMixtureModel(BayesModel):
 		n_seen_batches = 0
 		epoch_starts, epoch_ends = None, None
 
-		with Parallel(n_jobs=n_jobs, backend='threading') as parallel:
+		with Parallel(n_jobs=n_jobs) as parallel:
 			while improvement > stop_threshold and iteration < max_iterations + 1:
 				epoch_start_time = time.time()
 				step_size = 1 - ((1 - inertia) * (2 + iteration) ** -lr_decay) 
